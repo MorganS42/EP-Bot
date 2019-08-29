@@ -32,6 +32,7 @@ var over=100;
 var mt=30;
 
 var wait=true;
+var wait2=true;
 
 function run() { //this run's every 0.5 seconds
 	/*try {
@@ -139,7 +140,7 @@ function run() { //this run's every 0.5 seconds
 							if(wait2) {
 								wait2=false;
 								for(var i=0; i<ins.length; i++) {
-									if(ins[i]==document.getElementsByClassName("field native-font")[0].innerText) {
+									if(ins[i]==str) {//document.getElementsByClassName("field native-font")[0].innerText) {
 										ous[i]=document.getElementById("correct-answer-field").innerText;
 									}
 								}
@@ -222,4 +223,4 @@ function run() { //this run's every 0.5 seconds
 
 window.setInterval(function(){
   run();  
-}, 500);
+}, 100);
