@@ -9,7 +9,7 @@ var ous = []; //outputs (saves all the outputs in the list)
 var array = []; //temp array used for many purposes.
 var an; //the answer
 
-var ov=true; //old version
+var ov=false; //old version
 
 var re=false; //reverse, set this to true if reverse is selected on the list on EP.
 
@@ -24,7 +24,9 @@ var learnt=false;
 var bad=false;
 
 var bt=0;
-var btm=8;
+var btm=12;
+
+var m=1;
 
 var track=0;
 var over=100;
@@ -33,6 +35,10 @@ var mt=30;
 
 var wait=true;
 var wait2=true;
+
+var wait3=false;
+
+var wait4=0;
 
 function run() { //this run's every 0.5 seconds
 	/*try {
@@ -137,17 +143,24 @@ function run() { //this run's every 0.5 seconds
 					else { //it's not in the revision so it must be in the actual quiz
 						if(document.getElementById("continue-button").innerText=="Next question") {
 							//bad=true;
-							if(wait2) {
-								wait2=false;
-								for(var i=0; i<ins.length; i++) {
-									if(ins[i]==str) {//document.getElementsByClassName("field native-font")[0].innerText) {
-										ous[i]=document.getElementById("correct-answer-field").innerText;
+							if(wait4>10) {
+								wait4=0;
+								if(wait2) {
+									wait2=false;
+									for(var i=0; i<ins.length; i++) {
+										if(ins[i]==str) {//document.getElementsByClassName("field native-font")[0].innerText) {
+											ous[i]=document.getElementById("correct-answer-field").innerText;
+										}
 									}
 								}
+								else {
+									wait2=true;
+									document.getElementById("continue-button").click();
+								}
+								m=1;
 							}
 							else {
-								wait2=true;
-								document.getElementById("continue-button").click();
+								wait4++;
 							}
 							bt++;
 						}
@@ -223,4 +236,4 @@ function run() { //this run's every 0.5 seconds
 
 window.setInterval(function(){
   run();  
-}, 100);
+}, 100*m);
